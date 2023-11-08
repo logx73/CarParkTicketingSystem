@@ -1,0 +1,21 @@
+package com.psystem.model.car;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
+public class Car {
+    @Id
+    private Long id;
+    private String registrationNumber;
+    private String colour;
+}

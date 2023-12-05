@@ -1,6 +1,7 @@
 package com.psystem.controller.car;
 
 import com.psystem.model.car.Car;
+import com.psystem.model.parking.ParkingLot;
 import com.psystem.service.car.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +25,9 @@ public class CarController {
 
     @GetMapping(value = "/v1/parking-management/cars/{colour}")
     ResponseEntity<List<Car>> getCarByColour(@PathVariable String colour){
-        if(colour.matches()){
-
-        }
+//        if(colour.matches()){
+//
+//        }
         return ResponseEntity.ok(carService.getCarsByColour(colour));
     }
 

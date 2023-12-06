@@ -7,6 +7,8 @@ import com.psystem.service.parking.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TicketService {
     @Autowired
@@ -24,5 +26,13 @@ public class TicketService {
             ticket.setParkingLot(parkingLot);
         }
         return ticketRepository.save(ticket);
+    }
+
+    public Long getTicketByRegistrationNumber(String registrationNumber) {
+        return ticketRepository.findByRegNumber(registrationNumber);
+    }
+
+    public List<Long> getTicketsByColour(String colour) {
+        return ticketRepository.findByColour(colour);
     }
 }

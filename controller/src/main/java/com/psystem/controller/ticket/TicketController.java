@@ -3,9 +3,9 @@ package com.psystem.controller.ticket;
 import com.psystem.model.ticket.Ticket;
 import com.psystem.service.ticket.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class TicketController {
@@ -17,4 +17,13 @@ public class TicketController {
         return ticketService.saveTicket(ticket);
     }
 
+    @GetMapping(value = "/v1/parking-managment/ticket")
+    public Long getTicketDetailsByRegistrationNumber(@RequestParam String registrationNumber){
+        return ticketService.getTicketByRegistrationNumber(registrationNumber);
+    }
+
+    @GetMapping(value = "/v1/parking-managment/tickets")
+    public List<Long> getTicketsByColour(@RequestParam String colour){
+        return ticketService.getTicketsByColour(colour);
+    }
 }

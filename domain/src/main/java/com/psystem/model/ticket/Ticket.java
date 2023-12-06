@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ticketId;
     @OneToOne(cascade = CascadeType.ALL)
     private Car car;

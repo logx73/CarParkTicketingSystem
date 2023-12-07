@@ -17,6 +17,6 @@ public class CarService {
     }
 
     public List<String> getCarsByColour(String colour) {
-        return carRepository.findAllByColour(colour).stream().map(car->car.getRegistrationNumber()).toList();
+        return carRepository.findAllByColour(colour).stream().map(Car::getRegistrationNumber).toList();
     }
 }

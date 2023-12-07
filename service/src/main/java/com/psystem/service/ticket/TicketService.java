@@ -1,6 +1,7 @@
 package com.psystem.service.ticket;
 
 import com.psystem.model.parking.ParkingLot;
+import com.psystem.global.Exception.ParkingSpaceException;
 import com.psystem.model.ticket.Ticket;
 import com.psystem.repository.ticket.TicketRepository;
 import com.psystem.service.parking.ParkingService;
@@ -20,7 +21,7 @@ public class TicketService {
     public Ticket saveTicket(Ticket ticket){
         ParkingLot parkingLot = parkingService.checkIfParkingAvilable();
         if(parkingLot==null){
-            throw new RuntimeException("Parking Space Unavailable");
+            throw new ParkingSpaceException();
         }
         else {
             ticket.setParkingLot(parkingLot);

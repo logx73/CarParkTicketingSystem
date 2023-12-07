@@ -19,7 +19,7 @@ public class ParkingService {
         return parkingRepository.save(parkingLot).equals(parkingLot)?"Parking Lot Created":"Parking Lot Not Created";
     }
 
-    public List<ParkingLot> getAllParkingLot() {
+    private List<ParkingLot> getAllParkingLot() {
         return parkingRepository.findAll();
     }
 
@@ -27,12 +27,10 @@ public class ParkingService {
         int no_of_parkingLot = getAllParkingLot().size();
         for(int i=0;i<no_of_parkingLot;i++){
             if(getAllParkingLot().get(i).getRemainingCapacity()>0){
-
                 ParkingLot parkingLot = getAllParkingLot().get(i);
                 parkingLot.setRemainingCapacity(parkingLot.getRemainingCapacity()-1);
                 parkingRepository.save(parkingLot);
                 return getAllParkingLot().get(i);
-
             }
         }
         return null;

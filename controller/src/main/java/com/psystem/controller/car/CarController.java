@@ -23,7 +23,7 @@ public class CarController {
         return ResponseEntity.ok(carService.getAllCars());
     }
     @GetMapping(value = "/v1/parking-management/cars/{colour}")
-    ResponseEntity<List<Car>> getCarByColour(@PathVariable String colour){
+    ResponseEntity<List<String>> getCarByColour(@PathVariable String colour){
             if(colour.matches(REGEX_TO_ONLY_ALLOW_ALPHABETS)){
                 return ResponseEntity.ok(carService.getCarsByColour(colour));
             }

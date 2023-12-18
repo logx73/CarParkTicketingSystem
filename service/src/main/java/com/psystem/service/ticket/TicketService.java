@@ -8,7 +8,9 @@ import com.psystem.service.parking.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
 
 @Service
 public class TicketService {
@@ -18,15 +20,16 @@ public class TicketService {
     @Autowired
     private ParkingService parkingService;
 
+    @Transactional
     public Ticket saveTicket(Ticket ticket){
-        ParkingLot parkingLot = parkingService.checkIfParkingAvilable();
-        if(parkingLot==null){
-            throw new ParkingSpaceException();
-        }
-        else {
-            ticket.setParkingLot(parkingLot);
-        }
-        return ticketRepository.save(ticket);
+            ParkingLot parkingLot = parkingService.checkIfParkingAvilable();
+            if(parkingLot==null){
+                throw new ParkingSpaceException();
+            }
+            else {
+                ticket.setParkingLot(parkingLot);
+            }
+            return ticketRepository.save(ticket);
     }
 
     public Long getTicketByRegistrationNumber(String registrationNumber) {
